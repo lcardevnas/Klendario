@@ -7,6 +7,13 @@ Overview
 
 Klendario is a Swift wrapper over the `EventKit` framework. It adds simplicity to the task of managing events in the iOS Calendar by providing handfull functions, extensions and the semi-automatic managment of the user authorization request to access the iOS calendar.
 
+Requirements
+==============
+
+* iOS 9.0+
+* Xcode 8.3+
+* Swift 4.2+
+
 Install
 ==============
 
