@@ -23,9 +23,11 @@ public typealias KlendarioAuthorizationCompletion = (_ granted: Bool, _ status: 
 
 public class Klendario {
     
-    static let manager = Klendario()
+    /// A singleton object which mainly stored the default `eventStore`.
+    fileprivate static let manager = Klendario()
     
-    fileprivate let eventStore = EKEventStore()
+    /// The default `eventStore` object to use in the get/add/remove tasks.
+    fileprivate var eventStore = EKEventStore()
     
     
     // MARK: - Authorization
@@ -58,7 +60,7 @@ public class Klendario {
     
     // MARK: - Events
     // MARK: - Creating events
-    /// Creates an empty `EKEvent` object with the `eventStore`'s default calendar for new events.
+    /// Creates a new `EKEvent` object with the `eventStore`'s default calendar for new events.
     ///
     /// - parameter calendar: The calendar where to create the event. If `nil`, the `eventStore`'s default
     ///                         calendar for new events is used instead.
@@ -76,13 +78,13 @@ public class Klendario {
     ///
     /// - parameter identifier:     The event `identifier`.
     /// - parameter completion:     The `completion` closure called after the event search has been completed.
-    public class func getEvent(with identifier: String, completion: KlendarioEventCompletion? = nil) {
+    public class func getEvent(with identifier: String, completion: @escaping KlendarioEventCompletion) {
         execute({
             let eventStore = Klendario.manager.eventStore
             let event = eventStore.event(withIdentifier: identifier)
-            completion?(event, nil)
+            DispatchQueue.main.async { completion(event, nil) }
         }) { error in
-            completion?(nil, error)
+            DispatchQueue.main.async { completion(nil, error) }
         }
     }
     
@@ -90,16 +92,16 @@ public class Klendario {
     ///
     /// - parameter date:           The start date from where to start searching for events.
     /// - parameter to:             The end date up to where to search for events.
-    /// - parameter calendars:      Array of calendars where to seach for events.
+    /// - parameter calendars:      An optional array of calendars where to seach for events.
     /// - parameter completion:     The `completion` closure called after the events search has been completed.
-    public class func getEvents(from date: Date, to: Date, in calendars: [EKCalendar]? = nil, completion: KlendarioEventsCompletion? = nil) {
+    public class func getEvents(from date: Date, to: Date, in calendars: [EKCalendar]? = nil, completion: @escaping KlendarioEventsCompletion) {
         execute({
             let eventStore = Klendario.manager.eventStore
             let predicate = eventStore.predicateForEvents(withStart: date, end: to, calendars: calendars)
             let events = eventStore.events(matching: predicate)
-            completion?(events, nil)
+            DispatchQueue.main.async { completion(events, nil) }
         }) { error in
-            completion?(nil, error)
+            DispatchQueue.main.async { completion(nil, error) }
         }
     }
     
@@ -108,7 +110,8 @@ public class Klendario {
     /// Deletes the event with the given event `identifier`.
     ///
     /// - parameter identifier:     The event identifier to delete.
-    /// - parameter span:           Determines if the deletion should apply to this event only or all future events.
+    /// - parameter span:           Determines if the deletion should apply to this event only or all future events. If you omit
+    ///                                 this parameter it is set by default to `.thisEvent`.
     /// - parameter completion:     The `completion` closure to be called after the event deletion.
     public class func deleteEvent(with identifier: String, span: EKSpan = .thisEvent, completion: KlendarioCompletion? = nil) {
         execute({
@@ -137,14 +140,31 @@ public class Klendario {
     public class func commitChanges(_ completion: KlendarioCompletion? = nil) {
         executeAndThrow({
             try Klendario.manager.eventStore.commit()
-            completion?(nil)
+            DispatchQueue.main.async { completion?(nil) }
         }, completion: completion)
     }
     
     
     // MARK: - Calendars
+    // MARK: - Creating calendars
+    /// Creates a new `EKCalendar` object in the `eventStore` object if provided. Otherwise uses the default one.
+    ///
+    /// - parameter eventStore: The eventStore where to create the calendar. If `nil`, the default `eventStore` is used.
+    /// - parameter source:     The source where you want the calendar to be stored. If `nil`, `source`'s default calendar
+    ///                             for new events is used.
+    public class func newCalendar(in eventStore: EKEventStore? = nil, source: EKSource? = nil) -> EKCalendar {
+        if let eventStore = eventStore {
+            Klendario.manager.eventStore = eventStore
+        }
+        
+        let calendar = EKCalendar(for: .event, eventStore: Klendario.manager.eventStore)
+        calendar.source = source ?? Klendario.manager.eventStore.defaultCalendarForNewEvents?.source
+        return calendar
+    }
+    
+    
     // MARK: - Getting calendars
-    /// Returns an array of calendars that have events added
+    /// Returns an array of calendars for the `.event` entity type.
     public class func getCalendars() -> [EKCalendar] {
         return Klendario.manager.eventStore.calendars(for: .event)
     }
@@ -166,8 +186,7 @@ public class Klendario {
             if granted {
                 do {
                     try block()
-                }
-                catch let error {
+                } catch let error {
                     completion?(error)
                 }
             } else {
@@ -188,7 +207,7 @@ public extension EKEvent {
     public func save(span: EKSpan = .thisEvent, completion: KlendarioCompletion? = nil) {
         Klendario.executeAndThrow({
             try Klendario.manager.eventStore.save(self, span: span)
-            completion?(nil)
+            DispatchQueue.main.async { completion?(nil) }
         }, completion: completion)
     }
     
@@ -201,7 +220,34 @@ public extension EKEvent {
     public func delete(span: EKSpan = .thisEvent, commit: Bool = true, completion: KlendarioCompletion? = nil) {
         Klendario.executeAndThrow({
             try Klendario.manager.eventStore.remove(self, span: span, commit: commit)
-            completion?(nil)
+            DispatchQueue.main.async { completion?(nil) }
+        }, completion: completion)
+    }
+}
+
+
+public extension EKCalendar {
+    /// Adds the calendar to the `eventStore`.
+    ///
+    /// - parameter commit:         A boolean indicating if the calendar should be removed inmediatelly or after the next
+    ///                                 `eventStore`'s `commit` call.
+    /// - parameter completion:     The `completion` closure to be called on add calendar completion.
+    public func save(commit: Bool = true, completion: KlendarioCompletion? = nil) {
+        Klendario.executeAndThrow({
+            try Klendario.manager.eventStore.saveCalendar(self, commit: commit)
+            DispatchQueue.main.async { completion?(nil) }
+        }, completion: completion)
+    }
+    
+    /// Deletes the calendar from the `eventStore`.
+    ///
+    /// - parameter commit:         A boolean indicating if the calendar should be removed inmediatelly or after the next
+    ///                                 `eventStore`'s `commit` call.
+    /// - parameter completion:     The `completion` closure to be called after the calendar deletion.
+    public func delete(commit: Bool = true, completion: KlendarioCompletion? = nil) {
+        Klendario.executeAndThrow({
+            try Klendario.manager.eventStore.removeCalendar(self, commit: commit)
+            DispatchQueue.main.async { completion?(nil) }
         }, completion: completion)
     }
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA09BCC721A546A40089E3C2 /* KDError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09BCC621A546A40089E3C2 /* KDError.swift */; };
 		AA69CC8C21A4597100A8E9A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69CC8B21A4597100A8E9A6 /* AppDelegate.swift */; };
 		AA69CC8E21A4597100A8E9A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69CC8D21A4597100A8E9A6 /* ViewController.swift */; };
 		AA69CC9121A4597100A8E9A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA69CC8F21A4597100A8E9A6 /* Main.storyboard */; };
@@ -15,6 +14,7 @@
 		AA69CC9621A4597300A8E9A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA69CC9421A4597300A8E9A6 /* LaunchScreen.storyboard */; };
 		AA69CCA121A4597300A8E9A6 /* KlendarioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69CCA021A4597300A8E9A6 /* KlendarioTests.swift */; };
 		AA69CCAF21A45A7200A8E9A6 /* Klendario.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69CCAE21A45A7200A8E9A6 /* Klendario.swift */; };
+		AABD160921A6BB010007540F /* KDError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD160821A6BB010007540F /* KDError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +28,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AA09BCC621A546A40089E3C2 /* KDError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDError.swift; sourceTree = "<group>"; };
 		AA69CC8821A4597100A8E9A6 /* Klendario.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klendario.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA69CC8B21A4597100A8E9A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA69CC8D21A4597100A8E9A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +39,7 @@
 		AA69CCA021A4597300A8E9A6 /* KlendarioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlendarioTests.swift; sourceTree = "<group>"; };
 		AA69CCA221A4597300A8E9A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA69CCAE21A45A7200A8E9A6 /* Klendario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Klendario.swift; sourceTree = "<group>"; };
+		AABD160821A6BB010007540F /* KDError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				AA69CCAE21A45A7200A8E9A6 /* Klendario.swift */,
-				AA09BCC621A546A40089E3C2 /* KDError.swift */,
+				AABD160821A6BB010007540F /* KDError.swift */,
 			);
-			path = Source;
+			name = Source;
+			path = ../Source;
 			sourceTree = "<group>";
 		};
 		AA69CCAC21A459FA00A8E9A6 /* Resources */ = {
@@ -228,7 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA69CCAF21A45A7200A8E9A6 /* Klendario.swift in Sources */,
-				AA09BCC721A546A40089E3C2 /* KDError.swift in Sources */,
+				AABD160921A6BB010007540F /* KDError.swift in Sources */,
 				AA69CC8E21A4597100A8E9A6 /* ViewController.swift in Sources */,
 				AA69CC8C21A4597100A8E9A6 /* AppDelegate.swift in Sources */,
 			);
