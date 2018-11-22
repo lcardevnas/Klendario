@@ -8,17 +8,17 @@
 
 import EventKit
 
-///
+/// A closure executed on calls which may return an error.
 public typealias KlendarioCompletion = (_ error: Error?) -> Void
 
-///
+/// A closure executed when trying to get an event from calendar.
 public typealias KlendarioEventCompletion = (_ event: EKEvent?, _ error: Error?) -> Void
 
-///
+/// A closure executed when trying to get a bunch of events from calendar.
 public typealias KlendarioEventsCompletion = (_ events: [EKEvent]?, _ error: Error?) -> Void
 
-///
-public typealias KlendarioAuthorizationCompletion = (_ granted: Bool, _ error: Error?) -> Void
+/// A closure executed when requesting user authorization to the calendar.
+public typealias KlendarioAuthorizationCompletion = (_ granted: Bool, _ status: EKAuthorizationStatus, _ error: Error?) -> Void
 
 
 public class Klendario {
@@ -29,25 +29,28 @@ public class Klendario {
     
     
     // MARK: - Authorization
+    /// Prompts the user to authorize event access to the Calendar if permission has not been yet determined. Otherwise
+    /// it returns the specified error or access granted in case the user has authorized the access to the calendar.
     ///
+    /// - parameter completion:     The `completion` closure called on the request access to the calendar.
     public class func requestAuthorization(_ completion: KlendarioAuthorizationCompletion? = nil) {
         let status = EKEventStore.authorizationStatus(for: .event)
         switch status {
         case .authorized:
-            completion?(true, nil)
+            completion?(true, status, nil)
         case .notDetermined:
             Klendario.manager.eventStore
                 .requestAccess(to: .event) { (granted, error) in
-                    completion?(granted, error)
+                    completion?(granted, status, error)
             }
         case .restricted:
-            completion?(false, KDError.authorizationFailed(reason: .authorizationRestricted))
+            completion?(false, status, KDError.authorizationFailed(reason: .authorizationRestricted))
         case .denied:
-            completion?(false, KDError.authorizationFailed(reason: .authorizationDenied))
+            completion?(false, status, KDError.authorizationFailed(reason: .authorizationDenied))
         }
     }
     
-    /// Returns a boolean indicating if user has granted access to the device calendar.
+    /// Returns a boolean indicating if user has granted access to the device's calendar.
     public class func isAuthorized() -> Bool {
         return EKEventStore.authorizationStatus(for: .event) == .authorized
     }
@@ -83,7 +86,7 @@ public class Klendario {
         }
     }
     
-    /// Returns the events included between the provided start and end dates and are present in the provided `calendars`.
+    /// Returns the events included between the provided start and end dates and are present in the provided `calendars` array.
     ///
     /// - parameter date:           The start date from where to start searching for events.
     /// - parameter to:             The end date up to where to search for events.
@@ -102,6 +105,11 @@ public class Klendario {
     
     
     // MARK: - Removing events
+    /// Deletes the event with the given event `identifier`.
+    ///
+    /// - parameter identifier:     The event identifier to delete.
+    /// - parameter span:           Determines if the deletion should apply to this event only or all future events.
+    /// - parameter completion:     The `completion` closure to be called after the event deletion.
     public class func deleteEvent(with identifier: String, span: EKSpan = .thisEvent, completion: KlendarioCompletion? = nil) {
         execute({
             getEvent(with: identifier, completion: { (event, error) in
@@ -123,6 +131,9 @@ public class Klendario {
         Klendario.manager.eventStore.reset()
     }
     
+    /// Commit the unsaved changes made to the `eventStore`.
+    ///
+    /// - parameter completion:     The `completion` closure to be called after the commit has been made.
     public class func commitChanges(_ completion: KlendarioCompletion? = nil) {
         executeAndThrow({
             try Klendario.manager.eventStore.commit()
@@ -133,6 +144,7 @@ public class Klendario {
     
     // MARK: - Calendars
     // MARK: - Getting calendars
+    /// Returns an array of calendars that have events added
     public class func getCalendars() -> [EKCalendar] {
         return Klendario.manager.eventStore.calendars(for: .event)
     }
@@ -140,7 +152,7 @@ public class Klendario {
     
     // MARK: - Private
     fileprivate class func execute(_ block: @escaping (() -> ()), completion: KlendarioCompletion? = nil) {
-        requestAuthorization { (granted, error) in
+        requestAuthorization { (granted, _, error) in
             if granted {
                 block()
             } else {
@@ -150,7 +162,7 @@ public class Klendario {
     }
     
     fileprivate class func executeAndThrow(_ block: @escaping (() throws -> ()), completion: KlendarioCompletion? = nil) {
-        requestAuthorization { (granted, error) in
+        requestAuthorization { (granted, _, error) in
             if granted {
                 do {
                     try block()
@@ -168,10 +180,11 @@ public class Klendario {
 
 
 public extension EKEvent {
-    /// Adds the event to the calendar.
+    /// Adds the event to the `eventStore`'s calendar.
     ///
-    /// - parameter span:
-    /// - parameter completion:
+    /// - parameter span:           Determines if the modifications made to the event should apply to this event only
+    ///                                 or all future events.
+    /// - parameter completion:     The `completion` closure to be called on add event completion.
     public func save(span: EKSpan = .thisEvent, completion: KlendarioCompletion? = nil) {
         Klendario.executeAndThrow({
             try Klendario.manager.eventStore.save(self, span: span)
@@ -179,6 +192,12 @@ public extension EKEvent {
         }, completion: completion)
     }
     
+    /// Deletes the event from the `eventStore`'s calendar.
+    ///
+    /// - parameter span:           Determines if the deletion should apply to this event only or all future events.
+    /// - parameter commit:         A boolean indicating if the event should be removed inmediatelly or after the next
+    ///                                 `eventStore`'s `commit` call.
+    /// - parameter completion:     The `completion` closure to be called after the event deletion.
     public func delete(span: EKSpan = .thisEvent, commit: Bool = true, completion: KlendarioCompletion? = nil) {
         Klendario.executeAndThrow({
             try Klendario.manager.eventStore.remove(self, span: span, commit: commit)
