@@ -11,7 +11,7 @@ Requirements
 ==============
 
 * iOS 9.0+
-* Xcode 8.3+
+* Xcode 10.0+
 * Swift 4.2+
 
 Install
@@ -22,18 +22,19 @@ Install
 Add this line to your podfile:
 
 ```ruby
-pod 'Klendario', '~> 1.0'
+pod 'Klendario'
 ```
 
-Usage
+Setup
 ==============
 
-Import `EventKit` and `Klendario` in your View Controller subclass:
+Import `Klendario` in your source file:
 
 ```swift
-import EventKit
 import Klendario
 ```
+
+Then set the `NSCalendarsUsageDescription` usage description key in your app's `Info.plist` file to avoid the Xcode crash on access to sensitive data.
 
 Authorization
 ==============
