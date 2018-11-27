@@ -86,6 +86,8 @@ event.save { error in
 }
 ```
 
+Before saving events read the [Last but not least](#last) section.
+
 ### Getting events
 #### Get a single event
 
@@ -129,6 +131,7 @@ event.delete(span: .futureEvents, commit: false) { error in
     }
 }
 ```
+Before deleting events read the [Last but not least](#last) section.
 
 Calendars
 ==============
@@ -144,6 +147,8 @@ calendar.save()
 ```
 
 As for events, you can use a `completion` closure to handle possible errors or perform some action on task completion. This method is flexible so you can pass a different `eventStore` or `source` if you don't want to use the default one.
+
+Before saving calendars read the [Last but not least](#last) section.
 
 ### Getting calendars
 
@@ -170,8 +175,11 @@ calendar.delete(commit: true) { error in
     }
 }
 ```
+Before deleting calendars read the [Last but not least](#last) section.
 
-Last but not least
+<a name="last"></a>Last but not least
 ==============
 
-To save an event or a calendar simply call `save()` on the object, as shown in the **Create Events** and the **Create calendars** sections. Be carefull to not call `save()` on objects not retrieved with the `Klendario` functions. `EventKit` does not support cross-store saving at least until iOS 12.
+It is very simple to save or delete an event or a calendar with `Klendario`, you just need to call `save()` or `delete()` on the object as shown in previous sections. **Be carefull** to not call `save()` or `delete()` on objects not retrieved with the `Klendario` API, because it shares the same `EKEventStore` object across all the API calls.
+
+`EventKit` does not support cross-store saving at least until iOS 12.
