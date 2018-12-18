@@ -7,127 +7,135 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA4F5B6621C8E16C003B0641 /* Klendario.h in Headers */ = {isa = PBXBuildFile; fileRef = AA4F5B6421C8E16C003B0641 /* Klendario.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA65A11921C8E93B0019609A /* KDError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4F5B5A21C8E0F4003B0641 /* KDError.swift */; };
-		AA65A11A21C8E93B0019609A /* Klendario.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4F5B5921C8E0F4003B0641 /* Klendario.swift */; };
+		AA4F5B2521C8DE88003B0641 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4F5B2421C8DE88003B0641 /* AppDelegate.swift */; };
+		AA4F5B2721C8DE88003B0641 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4F5B2621C8DE88003B0641 /* ViewController.swift */; };
+		AA4F5B2A21C8DE88003B0641 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA4F5B2821C8DE88003B0641 /* Main.storyboard */; };
+		AA4F5B2C21C8DE8A003B0641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA4F5B2B21C8DE8A003B0641 /* Assets.xcassets */; };
+		AA4F5B2F21C8DE8A003B0641 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA4F5B2D21C8DE8A003B0641 /* LaunchScreen.storyboard */; };
+		AA65A11721C8E69E0019609A /* Klendario.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA65A11621C8E69E0019609A /* Klendario.framework */; };
+		AA65A11821C8E69E0019609A /* Klendario.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA65A11621C8E69E0019609A /* Klendario.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AA65A11521C8E56A0019609A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AA65A11821C8E69E0019609A /* Klendario.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		AA4F5B5921C8E0F4003B0641 /* Klendario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Klendario.swift; sourceTree = "<group>"; };
-		AA4F5B5A21C8E0F4003B0641 /* KDError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDError.swift; sourceTree = "<group>"; };
-		AA4F5B6221C8E16C003B0641 /* Klendario.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Klendario.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA4F5B6421C8E16C003B0641 /* Klendario.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Klendario.h; sourceTree = "<group>"; };
-		AA4F5B6521C8E16C003B0641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA4F5B6B21C8E2E5003B0641 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
-		AA4F5B6C21C8E2E5003B0641 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		AA4F5B6D21C8E2E6003B0641 /* Klendario.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Klendario.podspec; sourceTree = "<group>"; };
+		AA4F5B2121C8DE88003B0641 /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA4F5B2421C8DE88003B0641 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA4F5B2621C8DE88003B0641 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AA4F5B2921C8DE88003B0641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AA4F5B2B21C8DE8A003B0641 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA4F5B2E21C8DE8A003B0641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AA4F5B3021C8DE8A003B0641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA65A11621C8E69E0019609A /* Klendario.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Klendario.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AA4F5B5F21C8E16C003B0641 /* Frameworks */ = {
+		AA4F5B1E21C8DE88003B0641 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA65A11721C8E69E0019609A /* Klendario.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AA4F5B3821C8E07B003B0641 = {
+		AA4F5B1821C8DE88003B0641 = {
 			isa = PBXGroup;
 			children = (
-				AA4F5B5621C8E0C4003B0641 /* Deployment */,
-				AA4F5B5721C8E0C9003B0641 /* Source */,
-				AA4F5B4221C8E07B003B0641 /* Products */,
+				AA65A11621C8E69E0019609A /* Klendario.framework */,
+				AA4F5B2321C8DE88003B0641 /* iOS Example */,
+				AA4F5B2221C8DE88003B0641 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		AA4F5B4221C8E07B003B0641 /* Products */ = {
+		AA4F5B2221C8DE88003B0641 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA4F5B6221C8E16C003B0641 /* Klendario.framework */,
+				AA4F5B2121C8DE88003B0641 /* iOS Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AA4F5B5621C8E0C4003B0641 /* Deployment */ = {
+		AA4F5B2321C8DE88003B0641 /* iOS Example */ = {
 			isa = PBXGroup;
 			children = (
-				AA4F5B6C21C8E2E5003B0641 /* LICENSE */,
-				AA4F5B6D21C8E2E6003B0641 /* Klendario.podspec */,
-				AA4F5B6B21C8E2E5003B0641 /* VERSION */,
+				AA4F5B2421C8DE88003B0641 /* AppDelegate.swift */,
+				AA4F5B2621C8DE88003B0641 /* ViewController.swift */,
+				AA4F5B3721C8DEEB003B0641 /* Supporting files */,
+				AA4F5B3621C8DEE6003B0641 /* Resources */,
 			);
-			name = Deployment;
+			path = "iOS Example";
 			sourceTree = "<group>";
 		};
-		AA4F5B5721C8E0C9003B0641 /* Source */ = {
+		AA4F5B3621C8DEE6003B0641 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AA4F5B5A21C8E0F4003B0641 /* KDError.swift */,
-				AA4F5B5921C8E0F4003B0641 /* Klendario.swift */,
-				AA4F5B6A21C8E216003B0641 /* Supporting files */,
+				AA4F5B2821C8DE88003B0641 /* Main.storyboard */,
+				AA4F5B2D21C8DE8A003B0641 /* LaunchScreen.storyboard */,
+				AA4F5B2B21C8DE8A003B0641 /* Assets.xcassets */,
 			);
-			path = Source;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		AA4F5B6A21C8E216003B0641 /* Supporting files */ = {
+		AA4F5B3721C8DEEB003B0641 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				AA4F5B6421C8E16C003B0641 /* Klendario.h */,
-				AA4F5B6521C8E16C003B0641 /* Info.plist */,
+				AA4F5B3021C8DE8A003B0641 /* Info.plist */,
 			);
-			name = "Supporting files";
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		AA4F5B5D21C8E16C003B0641 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA4F5B6621C8E16C003B0641 /* Klendario.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		AA4F5B6121C8E16C003B0641 /* Klendario iOS */ = {
+		AA4F5B2021C8DE88003B0641 /* iOS Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA4F5B6721C8E16C003B0641 /* Build configuration list for PBXNativeTarget "Klendario iOS" */;
+			buildConfigurationList = AA4F5B3321C8DE8A003B0641 /* Build configuration list for PBXNativeTarget "iOS Example" */;
 			buildPhases = (
-				AA4F5B5D21C8E16C003B0641 /* Headers */,
-				AA4F5B5E21C8E16C003B0641 /* Sources */,
-				AA4F5B5F21C8E16C003B0641 /* Frameworks */,
-				AA4F5B6021C8E16C003B0641 /* Resources */,
+				AA4F5B1D21C8DE88003B0641 /* Sources */,
+				AA4F5B1E21C8DE88003B0641 /* Frameworks */,
+				AA4F5B1F21C8DE88003B0641 /* Resources */,
+				AA65A11521C8E56A0019609A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Klendario iOS";
-			productName = "Klendario iOS";
-			productReference = AA4F5B6221C8E16C003B0641 /* Klendario.framework */;
-			productType = "com.apple.product-type.framework";
+			name = "iOS Example";
+			productName = "iOS Example";
+			productReference = AA4F5B2121C8DE88003B0641 /* iOS Example.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AA4F5B3921C8E07B003B0641 /* Project object */ = {
+		AA4F5B1921C8DE88003B0641 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = ThXou;
 				TargetAttributes = {
-					AA4F5B6121C8E16C003B0641 = {
+					AA4F5B2021C8DE88003B0641 = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
 			};
-			buildConfigurationList = AA4F5B3C21C8E07B003B0641 /* Build configuration list for PBXProject "Klendario" */;
+			buildConfigurationList = AA4F5B1C21C8DE88003B0641 /* Build configuration list for PBXProject "iOS Example" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -135,40 +143,62 @@
 				en,
 				Base,
 			);
-			mainGroup = AA4F5B3821C8E07B003B0641;
-			productRefGroup = AA4F5B4221C8E07B003B0641 /* Products */;
+			mainGroup = AA4F5B1821C8DE88003B0641;
+			productRefGroup = AA4F5B2221C8DE88003B0641 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AA4F5B6121C8E16C003B0641 /* Klendario iOS */,
+				AA4F5B2021C8DE88003B0641 /* iOS Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AA4F5B6021C8E16C003B0641 /* Resources */ = {
+		AA4F5B1F21C8DE88003B0641 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA4F5B2F21C8DE8A003B0641 /* LaunchScreen.storyboard in Resources */,
+				AA4F5B2C21C8DE8A003B0641 /* Assets.xcassets in Resources */,
+				AA4F5B2A21C8DE88003B0641 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AA4F5B5E21C8E16C003B0641 /* Sources */ = {
+		AA4F5B1D21C8DE88003B0641 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA65A11921C8E93B0019609A /* KDError.swift in Sources */,
-				AA65A11A21C8E93B0019609A /* Klendario.swift in Sources */,
+				AA4F5B2721C8DE88003B0641 /* ViewController.swift in Sources */,
+				AA4F5B2521C8DE88003B0641 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		AA4F5B2821C8DE88003B0641 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA4F5B2921C8DE88003B0641 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AA4F5B2D21C8DE8A003B0641 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA4F5B2E21C8DE8A003B0641 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		AA4F5B5121C8E07C003B0641 /* Debug */ = {
+		AA4F5B3121C8DE8A003B0641 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -229,7 +259,7 @@
 			};
 			name = Debug;
 		};
-		AA4F5B5221C8E07C003B0641 /* Release */ = {
+		AA4F5B3221C8DE8A003B0641 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -284,84 +314,64 @@
 			};
 			name = Release;
 		};
-		AA4F5B6821C8E16C003B0641 /* Debug */ = {
+		AA4F5B3421C8DE8A003B0641 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BZ3VSUA92U;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Source/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INFOPLIST_FILE = "$(SRCROOT)/iOS Example/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thxou.Klendario-iOS";
-				PRODUCT_NAME = Klendario;
-				SKIP_INSTALL = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thxou.Klendario-iOS-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		AA4F5B6921C8E16C003B0641 /* Release */ = {
+		AA4F5B3521C8DE8A003B0641 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BZ3VSUA92U;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Source/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INFOPLIST_FILE = "$(SRCROOT)/iOS Example/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thxou.Klendario-iOS";
-				PRODUCT_NAME = Klendario;
-				SKIP_INSTALL = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thxou.Klendario-iOS-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA4F5B3C21C8E07B003B0641 /* Build configuration list for PBXProject "Klendario" */ = {
+		AA4F5B1C21C8DE88003B0641 /* Build configuration list for PBXProject "iOS Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA4F5B5121C8E07C003B0641 /* Debug */,
-				AA4F5B5221C8E07C003B0641 /* Release */,
+				AA4F5B3121C8DE8A003B0641 /* Debug */,
+				AA4F5B3221C8DE8A003B0641 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA4F5B6721C8E16C003B0641 /* Build configuration list for PBXNativeTarget "Klendario iOS" */ = {
+		AA4F5B3321C8DE8A003B0641 /* Build configuration list for PBXNativeTarget "iOS Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA4F5B6821C8E16C003B0641 /* Debug */,
-				AA4F5B6921C8E16C003B0641 /* Release */,
+				AA4F5B3421C8DE8A003B0641 /* Debug */,
+				AA4F5B3521C8DE8A003B0641 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = AA4F5B3921C8E07B003B0641 /* Project object */;
+	rootObject = AA4F5B1921C8DE88003B0641 /* Project object */;
 }

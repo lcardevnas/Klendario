@@ -1,5 +1,5 @@
 //
-//  KDError.swift
+//  Klendario.h
 //
 //  Copyright © 2018 Luis Cardenas. All rights reserved.
 //
@@ -22,35 +22,10 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+#import <UIKit/UIKit.h>
 
-public enum KDError: Error {
-    case authorizationFailed(reason: AuthorizationFailureReason)
-    
-    public enum AuthorizationFailureReason {
-        case authorizationDenied
-        case authorizationRestricted
-    }
-}
+//! Project version number for Klendario.
+FOUNDATION_EXPORT double KlendarioVersionNumber;
 
-
-// MARK: - Error Descriptions
-extension KDError: LocalizedError {
-    public var errorDescription: String? {
-        switch self {
-        case .authorizationFailed(let reason):
-            return reason.localizedDescription
-        }
-    }
-}
-
-extension KDError.AuthorizationFailureReason {
-    var localizedDescription: String {
-        switch self {
-        case .authorizationDenied:
-            return NSLocalizedString("authorization_denied", comment: "Calendar access authorization was denied")
-        case .authorizationRestricted:
-            return NSLocalizedString("authorization_restricted", comment: "Calendar access authorization is restricted")
-        }
-    }
-}
+//! Project version string for Klendario.
+FOUNDATION_EXPORT const unsigned char KlendarioVersionString[];
