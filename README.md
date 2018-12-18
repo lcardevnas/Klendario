@@ -3,6 +3,7 @@ Overview
 
 [![Pod Version](http://img.shields.io/cocoapods/v/Klendario.svg?style=flat)](https://github.com/ThXou/Klendario)
 [![Pod Platform](http://img.shields.io/cocoapods/p/Klendario.svg?style=flat)](https://github.com/ThXou/Klendario)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Pod License](http://img.shields.io/cocoapods/l/Klendario.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Klendario is a Swift wrapper over the `EventKit` framework. It adds simplicity to the task of managing events in the iOS Calendar by providing handfull functions, extensions and the semi-automatic managment of the user authorization request to access the iOS calendar.
