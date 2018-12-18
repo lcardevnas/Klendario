@@ -25,6 +25,16 @@ Add this line to your podfile:
 pod 'Klendario'
 ```
 
+### Carthage
+
+Add this line to your `cartfile`:
+
+```ruby
+github "ThXou/Klendario" "master"
+```
+
+And then follow the official documentation about [Adding frameworks to an application](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
+
 Setup
 ==============
 
